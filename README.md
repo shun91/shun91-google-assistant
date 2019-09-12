@@ -1,6 +1,11 @@
 # my-google-assistant-functions
 
-Dialogflow の Fulfillment Webhook に設定して利用する Firebase Functions。
+Google Assistant で任意の処理を実行するための Functions。
+
+## 使用技術
+
+- Dialogflow (Fulfillment Webhook)
+- Firebase Functions
 
 ## 環境変数の設定
 
