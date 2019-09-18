@@ -17,8 +17,6 @@ firebase functions:config:set remo.token="<TOKEN>"
 ## TODO
 
 dialogflow の依存を切る
-action.json の自動生成
-ts 化
 remo_token も credentials.json に書く
 src ディレクトリを削除する
 依存パッケージのバージョン上げる
@@ -30,7 +28,7 @@ gactions コマンドのインストール
 https://developers.google.com/actions/tools/gactions-cli
 
 ```
-gactions update --action_package PACKAGE_NAME --project PROJECT_ID
+gactions update --action_package PACKAGE_NAME --project shun91-assistant
 gactions update --action_package action.json --project test-kawahara
 ```
 

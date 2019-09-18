@@ -24,6 +24,9 @@
       "git add"
     ]
   },
+  "config": {
+    "gactionsProjectId": "shun91-assistant"
+  },
   "scripts": {
     "lint": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" --ext .js,.ts **/src/**",
     "fix": "yarn lint --fix",
