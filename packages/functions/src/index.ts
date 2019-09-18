@@ -1,5 +1,5 @@
 import { https } from 'firebase-functions';
-import { dialogflow } from 'actions-on-google';
+import { actionssdk } from 'actions-on-google';
 import { get } from 'request-promise';
 import credentials from '../../../credentials.json';
 
@@ -36,41 +36,25 @@ const getTemperatureAndHumidityText = async () => {
 // handlers
 // -----------------------------------------------------------------------------
 
-const app = dialogflow();
+const app = actionssdk();
 
-app.intent('Temperature', async conv => {
-  try {
-    const text = await getTemperatureText();
-    return conv.close(text);
-  } catch (e) {
-    return conv.close(`Error: ${e}`);
-  }
+app.intent('actions.intent.MAIN', async conv => {
+  return conv.close(`あなたは「${conv.input.raw}」と言いました`);
 });
 
-app.intent('Humidity', async conv => {
-  try {
-    const text = await getHumidityText();
-    return conv.close(text);
-  } catch (e) {
-    return conv.close(`Error: ${e}`);
-  }
+app.intent('temperature', async conv => {
+  const text = await getTemperatureText();
+  return conv.close(text);
 });
 
-app.intent('Temperature And Humidity', async conv => {
-  try {
-    const text = await getTemperatureAndHumidityText();
-    return conv.close(text);
-  } catch (e) {
-    return conv.close(`Error: ${e}`);
-  }
+app.intent('humidity', async conv => {
+  const text = await getHumidityText();
+  return conv.close(text);
 });
 
-app.intent('Default Welcome Intent', conv => {
-  conv.close('こんにちは。');
-});
-
-app.intent('Default Fallback Intent', conv => {
-  conv.close('fail');
+app.intent('temperatureAndHumidity', async conv => {
+  const text = await getTemperatureAndHumidityText();
+  return conv.close(text);
 });
 
 export const main = https.onRequest(app);

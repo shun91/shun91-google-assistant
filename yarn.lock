@@ -1674,23 +1674,6 @@ detect-libc@^1.0.2:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
-dialogflow-fulfillment@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/dialogflow-fulfillment/-/dialogflow-fulfillment-0.5.0.tgz#0b812767234afaa357db6b037d6217cc9d37c43c"
-  integrity sha512-rmj6jApYGA8177iYKaaCupAYdFHMY6W0Vc+t2rr668TP5h8EiS1MYkBtwnP8nRR8QB1DA0vYE7AEn++EskBVJQ==
-  dependencies:
-    debug "^3.1.0"
-
-dialogflow@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/dialogflow/-/dialogflow-0.6.0.tgz#a27ffccb44d45595e9d1874a681f64bfbfbdd1f8"
-  integrity sha512-ZcFZwkPWVwmgRdSL4hANaCG6ryypWDa9KYvppQLDo3cTyWO7l0eoJGCLGs2vUyBwh1i6XfhnSFu/2YGnZI6RVw==
-  dependencies:
-    google-gax "^0.17.1"
-    lodash.merge "^4.6.0"
-    lodash.union "^4.6.0"
-    protobufjs "^6.8.0"
-
 didyoumean@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/didyoumean/-/didyoumean-1.2.1.tgz#e92edfdada6537d484d73c0172fd1eba0c4976ff"
@@ -3985,7 +3968,7 @@ lodash.keys@~2.4.1:
     lodash._shimkeys "~2.4.1"
     lodash.isobject "~2.4.1"
 
-lodash.merge@^4.6.0, lodash.merge@^4.6.1:
+lodash.merge@^4.6.1:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==

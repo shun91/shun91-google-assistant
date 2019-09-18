@@ -14,6 +14,42 @@ const action = {
         name: 'actions.intent.MAIN',
       },
     },
+    {
+      name: 'temperature',
+      fulfillment: {
+        conversationName: 'main',
+      },
+      intent: {
+        name: 'temperature',
+        trigger: {
+          queryPatterns: ['現在の室温'],
+        },
+      },
+    },
+    {
+      name: 'humidity',
+      fulfillment: {
+        conversationName: 'main',
+      },
+      intent: {
+        name: 'humidity',
+        trigger: {
+          queryPatterns: ['現在の湿度'],
+        },
+      },
+    },
+    {
+      name: 'temperatureAndHumidity',
+      fulfillment: {
+        conversationName: 'main',
+      },
+      intent: {
+        name: 'temperatureAndHumidity',
+        trigger: {
+          queryPatterns: ['現在の室温と湿度'],
+        },
+      },
+    },
   ],
   conversations: {
     main: {

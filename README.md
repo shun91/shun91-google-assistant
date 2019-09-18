@@ -16,8 +16,6 @@ firebase functions:config:set remo.token="<TOKEN>"
 
 ## TODO
 
-dialogflow の依存を切る
-src ディレクトリを削除する
 依存パッケージのバージョン上げる
 fb:build でバンドルしたい
 firebase functions も export default にしたい
