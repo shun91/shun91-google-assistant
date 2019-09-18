@@ -25,8 +25,19 @@
     ]
   },
   "scripts": {
-    "start": "firebase serve --only functions:dialogflowFirebaseFulfillment",
-    "deploy": "firebase deploy --only functions:dialogflowFirebaseFulfillment"
+    "lint": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" --ext .js,.ts **/src/**",
+    "fix": "yarn lint --fix",
+    "fb:clean": "rm -rf packages/functions/dist",
+    "fb:build": "yarn fb:clean && tsc packages/functions/src/** --outDir packages/functions/dist",
+    "fb:serve": "yarn fb:build && firebase serve --only functions",
+    "fb:shell": "yarn fb:build && firebase functions:shell",
+    "fb:start": "yarn shell",
+    "fb:deploy": "yarn fb:build && firebase deploy --only functions",
+    "fb:logs": "firebase functions:log",
+    "ga:clean": "rm -rf packages/actions/dist",
+    "ga:build": "yarn ga:clean && mkdir -p packages/actions/dist && ts-node packages/actions/src/action.ts > packages/actions/dist/action.json",
+    "ga:test": "yarn ga:build && gactions test --action_package packages/actions/dist/action.json --project $npm_package_config_gactionsProjectId",
+    "ga:update": "yarn ga:build && gactions update --action_package packages/actions/dist/action.json --project $npm_package_config_gactionsProjectId"
   },
   "dependencies": {
     "actions-on-google": "^2.2.0",

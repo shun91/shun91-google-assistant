@@ -19,6 +19,7 @@ firebase functions:config:set remo.token="<TOKEN>"
 dialogflow の依存を切る
 action.json の自動生成
 ts 化
+remo_token も credentials.json に書く
 src ディレクトリを削除する
 依存パッケージのバージョン上げる
 readme 書く

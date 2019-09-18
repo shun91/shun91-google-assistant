@@ -2,6 +2,15 @@
 # Created by https://www.gitignore.io/api/node,macos,firebase
 # Edit at https://www.gitignore.io/?templates=node,macos,firebase
 
+# credentials
+credentials.json
+
+# dist
+dist
+
+# ActionsSDK
+creds.data
+
 ### Firebase ###
 .idea
 **/node_modules/*
