@@ -20,6 +20,7 @@ firebase functions:config:set remo.token="<TOKEN>"
 fb:build でバンドルしたい
 firebase functions も export default にしたい
 readme 書く
+queryPatterns 使うのがいいのか、全部 app.intent で処理するのがいいのか？
 
 ## メモ
 
