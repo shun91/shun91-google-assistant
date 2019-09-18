@@ -2,33 +2,77 @@
 
 Google Assistant for shun91.
 
+Nature Remo Cloud API を叩いて現在の室温と湿度を教えてくれるアクションを実装済み。
+
 ## 使用技術
 
-- Dialogflow (Fulfillment Webhook)
-- Firebase Functions
+- [Actions SDK](https://developers.google.com/actions/sdk)
+- [Cloud Functions for Firebase](https://firebase.google.com/docs/functions)
+- [Nature Remo Cloud API](https://developer.nature.global)
 
-## 環境変数の設定
+## Requirements
+
+- Node.js +10
+- `gactions` コマンド ([インストール方法](<(https://developers.google.com/actions/tools/gactions-cli)>))
+
+## Quick Start
+
+### project の作成
+
+以下から実施する。  
+https://console.actions.google.com/
+
+### projectId 設定
+
+上記で作成した project の id を以下の 2 ヵ所に設定する。これらはデプロイ時などに必要となる。
+
+- `package.json` の `config.gactionsProjectId`
+- `.firebaserc` の `projects.default`
+
+### クレデンシャルの設定
+
+クレデンシャル情報は `credentials.json` で管理する。
+
+`credentials.sample.json` をコピーして、`credentials.json` を作成する。
 
 ```bash
-# Nature Remo API の token
-firebase functions:config:set remo.token="<TOKEN>"
+cp credentials.sample.json credentials.json
 ```
 
-## TODO
+設定が必要なクレデンシャルは以下の通り。
 
-fb:build でバンドルしたい
-firebase functions も export default にしたい
-readme 書く
-queryPatterns 使うのがいいのか、全部 app.intent で処理するのがいいのか？
+| 名前             | 説明                                             |
+| ---------------- | ------------------------------------------------ |
+| `fulfillmentUrl` | ActionPackage で利用する fullfillment の URL     |
+| `remoToken`      | Nature Remo Cloud API の OAuth2 アクセストークン |
 
-## メモ
+### fulfillment のデプロイ
 
-gactions コマンドのインストール  
-https://developers.google.com/actions/tools/gactions-cli
+fulfillment を Cloud Functions for Firebase にデプロイする。
 
 ```
-gactions update --action_package PACKAGE_NAME --project shun91-assistant
-gactions update --action_package action.json --project test-kawahara
+yarn fb:deploy
 ```
 
-yarn ga:update の projectId を書き換える
+### Action Package のデプロイ
+
+Action Package をデプロイする。
+
+```
+yarn ga:update
+```
+
+### シミュレーターでテストする
+
+以下を開くとシミュレーターが開くので、ここで動作をテストできる。  
+https://console.actions.google.com/project/{projectId}/simulator
+
+## 開発
+
+### fulfillment (Cloud Functions for Firebase)
+
+`packages/functions` 以下を修正する。
+
+### Action Package
+
+`packages/actions` 以下を修正する。
