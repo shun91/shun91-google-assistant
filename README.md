@@ -16,13 +16,12 @@ firebase functions:config:set remo.token="<TOKEN>"
 
 ## TODO
 
-eslint 入れる
-husky入れる
 dialogflow の依存を切る
 action.json の自動生成
 ts 化
+src ディレクトリを削除する
 依存パッケージのバージョン上げる
-readme書く
+readme 書く
 
 ## メモ
 

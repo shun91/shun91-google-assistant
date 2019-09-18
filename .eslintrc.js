@@ -30,5 +30,8 @@ module.exports = {
 
     // export するものが 1 つの場合の default export を必須にしない
     'import/prefer-default-export': 'off',
+
+    // 返り値の型を必須にしない
+    '@typescript-eslint/explicit-function-return-type': 'off',
   },
 };
