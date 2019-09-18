@@ -1,6 +1,6 @@
-# my-google-assistant-functions
+# shun91-google-assistant
 
-Google Assistant で任意の処理を実行するための Functions。
+Google Assistant for shun91.
 
 ## 使用技術
 
