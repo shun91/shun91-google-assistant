@@ -1,10 +1,11 @@
-import { https, config } from 'firebase-functions';
+import { https } from 'firebase-functions';
 import { dialogflow } from 'actions-on-google';
 import { get } from 'request-promise';
+import credentials from '../../../credentials.json';
 
 // gateways
 // -----------------------------------------------------------------------------
-const REMO_TOKEN = config().remo.token;
+const REMO_TOKEN = credentials.remoToken;
 const getDevices = async () =>
   get('https://api.nature.global/1/devices', {
     headers: { Authorization: `Bearer ${REMO_TOKEN}` },
@@ -72,4 +73,4 @@ app.intent('Default Fallback Intent', conv => {
   conv.close('fail');
 });
 
-export const dialogflowFirebaseFulfillment = https.onRequest(app);
+export const main = https.onRequest(app);

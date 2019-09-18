@@ -5,7 +5,7 @@
   "private": true,
   "license": "Apache Version 2.0",
   "author": "Shun Kawahara",
-  "main": "src/index.js",
+  "main": "packages/functions/dist/packages/functions/src/index.js",
   "engines": {
     "node": "10"
   },
@@ -31,7 +31,7 @@
     "lint": "eslint --ignore-path .gitignore --ignore-pattern \"!**/.*\" --ext .js,.ts **/src/**",
     "fix": "yarn lint --fix",
     "fb:clean": "rm -rf packages/functions/dist",
-    "fb:build": "yarn fb:clean && tsc packages/functions/src/** --outDir packages/functions/dist",
+    "fb:build": "yarn fb:clean && tsc -p packages/functions --outDir packages/functions/dist",
     "fb:serve": "yarn fb:build && firebase serve --only functions",
     "fb:shell": "yarn fb:build && firebase functions:shell",
     "fb:start": "yarn shell",
