@@ -16,7 +16,6 @@ firebase functions:config:set remo.token="<TOKEN>"
 
 ## TODO
 
-依存パッケージのバージョン上げる
 fb:build でバンドルしたい
 firebase functions も export default にしたい
 readme 書く
