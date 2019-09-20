@@ -1,4 +1,4 @@
-import { https } from 'firebase-functions';
+import { https, pubsub } from 'firebase-functions';
 import { actionssdk } from 'actions-on-google';
 import { get } from 'request-promise';
 import credentials from '../../../credentials.json';
@@ -58,3 +58,21 @@ app.intent('temperatureAndHumidity', async conv => {
 });
 
 export const main = https.onRequest(app);
+
+// cron jobs
+// -----------------------------------------------------------------------------
+
+/**
+ * firebase functions を定期的に実行してスリープしないようにする cron job
+ */
+export const wakeUp = pubsub
+  .schedule('0 0-23/12 * * *') // 12時間に1回実行
+  .timeZone('Asia/Tokyo')
+  .onRun(async () => {
+    console.info('start');
+    const res = await get(credentials.fulfillmentUrl).catch(
+      e => e.message || 'Request error but wake up is successful',
+    );
+    console.info('[response]', res);
+    console.info('finished');
+  });
