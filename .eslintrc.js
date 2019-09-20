@@ -28,6 +28,9 @@ module.exports = {
       },
     ],
 
+    // アロー関数において、可能なら { } の省略は必須とする
+    'arrow-body-style': ['error', 'as-needed'],
+
     // ts でうまく動作しないので off にする
     // https://qiita.com/euxn23/items/e2b9226ab1e02a9b1f20
     'import/no-unresolved': 'off',
