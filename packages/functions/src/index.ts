@@ -1,6 +1,7 @@
-import { https, pubsub } from 'firebase-functions';
+import * as functions from 'firebase-functions';
 import { actionssdk } from 'actions-on-google';
 import { get } from 'request-promise';
+import { runtimeOptions } from './runtimeOptions';
 import credentials from '../../../credentials.json';
 
 // gateways
@@ -57,7 +58,7 @@ app.intent('temperatureAndHumidity', async conv => {
   return conv.close(text);
 });
 
-export const main = https.onRequest(app);
+export const main = functions.runWith(runtimeOptions).https.onRequest(app);
 
 // cron jobs
 // -----------------------------------------------------------------------------
@@ -65,8 +66,9 @@ export const main = https.onRequest(app);
 /**
  * firebase functions を定期的に実行してスリープしないようにする cron job
  */
-export const wakeUp = pubsub
-  .schedule('0 0-23/12 * * *') // 12時間に1回実行
+export const wakeUp = functions
+  .runWith(runtimeOptions)
+  .pubsub.schedule('0 0-23/12 * * *') // 12時間に1回実行
   .timeZone('Asia/Tokyo')
   .onRun(async () => {
     console.info('start');

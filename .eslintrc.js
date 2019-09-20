@@ -28,6 +28,10 @@ module.exports = {
       },
     ],
 
+    // ts でうまく動作しないので off にする
+    // https://qiita.com/euxn23/items/e2b9226ab1e02a9b1f20
+    'import/no-unresolved': 'off',
+
     // export するものが 1 つの場合の default export を必須にしない
     'import/prefer-default-export': 'off',
 
