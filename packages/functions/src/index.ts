@@ -58,7 +58,10 @@ app.intent('temperatureAndHumidity', async conv => {
   return conv.close(text);
 });
 
-export const main = functions.runWith(runtimeOptions).https.onRequest(app);
+export const main = functions
+  .runWith(runtimeOptions)
+  .region('asia-northeast1')
+  .https.onRequest(app);
 
 // cron jobs
 // -----------------------------------------------------------------------------
@@ -68,6 +71,7 @@ export const main = functions.runWith(runtimeOptions).https.onRequest(app);
  */
 export const wakeUp = functions
   .runWith(runtimeOptions)
+  .region('asia-northeast1')
   .pubsub.schedule('0 * * * *') // 1時間に1回実行
   .timeZone('Asia/Tokyo')
   .onRun(async () => {
