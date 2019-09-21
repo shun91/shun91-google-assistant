@@ -39,9 +39,9 @@ const getTemperatureAndHumidityText = async () => {
 
 const app = actionssdk();
 
-app.intent('actions.intent.MAIN', async conv => {
-  return conv.close(`あなたは「${conv.input.raw}」と言いました`);
-});
+app.intent('actions.intent.MAIN', async conv =>
+  conv.close(`あなたは「${conv.input.raw}」と言いました`),
+);
 
 app.intent('temperature', async conv => {
   const text = await getTemperatureText();
@@ -68,7 +68,7 @@ export const main = functions.runWith(runtimeOptions).https.onRequest(app);
  */
 export const wakeUp = functions
   .runWith(runtimeOptions)
-  .pubsub.schedule('0 0-23/12 * * *') // 12時間に1回実行
+  .pubsub.schedule('0 * * * *') // 1時間に1回実行
   .timeZone('Asia/Tokyo')
   .onRun(async () => {
     console.info('start');
