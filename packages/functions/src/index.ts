@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions';
 import actionsApp from './actions';
-import * as fulfillmentService from './fulfillmentService';
+import * as fulfillmentService from './services/fulfillmentService';
 
 const configuredFunctions = functions
   .runWith({ memory: '128MB' })

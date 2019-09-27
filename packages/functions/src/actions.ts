@@ -3,7 +3,7 @@ import {
   getTemperatureText,
   getHumidityText,
   getTemperatureAndHumidityText,
-} from './remoService';
+} from './services/remoService';
 
 const app = actionssdk();
 

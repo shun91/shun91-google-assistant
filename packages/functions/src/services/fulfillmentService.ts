@@ -1,5 +1,5 @@
 import { get } from 'request-promise';
-import credentials from '../../../credentials.json';
+import credentials from '../../../../credentials.json';
 
 // gateways
 // -----------------------------------------------------------------------------
