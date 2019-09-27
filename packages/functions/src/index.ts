@@ -9,7 +9,7 @@ const configuredFunctions = functions
 /**
  * Actions SDK の fulfillment Endpoint
  */
-export const main = configuredFunctions.https.onRequest(actionsApp);
+export const fulfillment = configuredFunctions.https.onRequest(actionsApp);
 
 /**
  * firebase functions を定期的に実行してスリープしないようにする cron job
