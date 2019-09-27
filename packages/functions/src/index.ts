@@ -1,45 +1,16 @@
 import * as functions from 'firebase-functions';
-import { actionssdk } from 'actions-on-google';
 import { get } from 'request-promise';
-import {
-  getTemperatureText,
-  getHumidityText,
-  getTemperatureAndHumidityText,
-} from './remoService';
 import { runtimeOptions } from './runtimeOptions';
+import actionsApp from './actions';
 import credentials from '../../../credentials.json';
 
-// handlers
-// -----------------------------------------------------------------------------
-
-const app = actionssdk();
-
-app.intent('actions.intent.MAIN', async conv =>
-  conv.close(`あなたは「${conv.input.raw}」と言いました`),
-);
-
-app.intent('temperature', async conv => {
-  const text = await getTemperatureText();
-  return conv.close(text);
-});
-
-app.intent('humidity', async conv => {
-  const text = await getHumidityText();
-  return conv.close(text);
-});
-
-app.intent('temperatureAndHumidity', async conv => {
-  const text = await getTemperatureAndHumidityText();
-  return conv.close(text);
-});
-
+/**
+ * Actions SDK の fulfillment Endpoint
+ */
 export const main = functions
   .runWith(runtimeOptions)
   .region('asia-northeast1')
-  .https.onRequest(app);
-
-// cron jobs
-// -----------------------------------------------------------------------------
+  .https.onRequest(actionsApp);
 
 /**
  * firebase functions を定期的に実行してスリープしないようにする cron job
