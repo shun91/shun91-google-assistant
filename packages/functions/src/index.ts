@@ -1,24 +1,22 @@
 import * as functions from 'firebase-functions';
 import { get } from 'request-promise';
-import { runtimeOptions } from './runtimeOptions';
 import actionsApp from './actions';
 import credentials from '../../../credentials.json';
+
+const configuredFunctions = functions
+  .runWith({ memory: '128MB' })
+  .region('asia-northeast1');
 
 /**
  * Actions SDK の fulfillment Endpoint
  */
-export const main = functions
-  .runWith(runtimeOptions)
-  .region('asia-northeast1')
-  .https.onRequest(actionsApp);
+export const main = configuredFunctions.https.onRequest(actionsApp);
 
 /**
  * firebase functions を定期的に実行してスリープしないようにする cron job
  */
-export const wakeUp = functions
-  .runWith(runtimeOptions)
-  .region('asia-northeast1')
-  .pubsub.schedule('0 * * * *') // 1時間に1回実行
+export const wakeUp = configuredFunctions.pubsub
+  .schedule('0 * * * *') // 1時間に1回実行
   .timeZone('Asia/Tokyo')
   .onRun(async () => {
     console.info('start');
