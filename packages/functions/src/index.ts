@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import actionsApp from './actions';
+import actionsApp from './actionsApp';
 import * as fulfillmentService from './services/fulfillmentService';
 
 const configuredFunctions = functions
