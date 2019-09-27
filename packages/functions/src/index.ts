@@ -1,7 +1,6 @@
 import * as functions from 'firebase-functions';
-import { get } from 'request-promise';
 import actionsApp from './actions';
-import credentials from '../../../credentials.json';
+import * as fulfillmentService from './fulfillmentService';
 
 const configuredFunctions = functions
   .runWith({ memory: '128MB' })
@@ -18,11 +17,4 @@ export const main = configuredFunctions.https.onRequest(actionsApp);
 export const wakeUp = configuredFunctions.pubsub
   .schedule('0 * * * *') // 1時間に1回実行
   .timeZone('Asia/Tokyo')
-  .onRun(async () => {
-    console.info('start');
-    const res = await get(credentials.fulfillmentUrl).catch(
-      e => e.message || 'Request error but wake up is successful',
-    );
-    console.info('[response]', res);
-    console.info('finished');
-  });
+  .onRun(fulfillmentService.wakeUp);
