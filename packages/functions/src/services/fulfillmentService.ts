@@ -1,9 +1,13 @@
-import { get } from 'request-promise';
+import { post } from 'request-promise';
 import credentials from '../../../../credentials.json';
 
 // gateways
 // -----------------------------------------------------------------------------
-const fetchFulfillment = async () => get(credentials.fulfillmentUrl);
+const fetchFulfillment = async () =>
+  post(credentials.fulfillmentUrl, {
+    // 500 が返って来ないように intent を指定する
+    body: { inputs: [{ intent: 'actions.intent.MAIN' }] },
+  });
 
 // services
 // -----------------------------------------------------------------------------
