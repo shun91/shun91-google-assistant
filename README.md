@@ -54,6 +54,9 @@ fulfillment を Cloud Functions for Firebase にデプロイする。
 yarn fb:deploy
 ```
 
+デプロイ後、[Firebase Console](https://console.firebase.google.com) から **料金プランを従量制の「Blaze」に変更する** こと。  
+外部との通信 (Nature Remo API) をするために必要となる。
+
 ### Action Package のデプロイ
 
 Action Package をデプロイする。
