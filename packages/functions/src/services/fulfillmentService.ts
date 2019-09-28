@@ -18,9 +18,7 @@ const fetchFulfillment = async () =>
  */
 export const wakeUp = async () => {
   console.info('start');
-  const res = await fetchFulfillment().catch(
-    e => e.message || 'Request error but wake up is successful',
-  );
+  const res = await fetchFulfillment();
   console.info('[response]', res);
   console.info('finished');
 };
