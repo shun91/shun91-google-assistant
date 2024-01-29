@@ -1,3 +1,9 @@
+# ⚠️ DEPRECATED ⚠️
+
+Cloud Pub/Subで課金される可能性があるとの連絡があったためDEPRECATED
+
+---
+
 # shun91-google-assistant
 
 Google Assistant for shun91.
